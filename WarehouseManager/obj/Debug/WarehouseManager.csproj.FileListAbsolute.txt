@@ -24,3 +24,9 @@ C:\Users\Admin\Desktop\Csharp\WarehouseManager\WarehouseManager\obj\Debug\Wareho
 C:\Users\Admin\Desktop\Csharp\WarehouseManager\WarehouseManager\obj\Debug\WarehouseManager.csproj.CopyComplete
 C:\Users\Admin\Desktop\Csharp\WarehouseManager\WarehouseManager\obj\Debug\WarehouseManager.exe
 C:\Users\Admin\Desktop\Csharp\WarehouseManager\WarehouseManager\obj\Debug\WarehouseManager.pdb
+C:\Users\Admin\Desktop\Csharp\WarehouseManager\WarehouseManager\obj\Debug\ControlBarUC.g.cs
+C:\Users\Admin\Desktop\Csharp\WarehouseManager\WarehouseManager\obj\Debug\ControlBarUC.baml
+C:\Users\Admin\Desktop\Csharp\WarehouseManager\WarehouseManager\bin\Debug\Microsoft.Expression.Interactions.dll
+C:\Users\Admin\Desktop\Csharp\WarehouseManager\WarehouseManager\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Admin\Desktop\Csharp\WarehouseManager\WarehouseManager\bin\Debug\Microsoft.Expression.Interactions.xml
+C:\Users\Admin\Desktop\Csharp\WarehouseManager\WarehouseManager\bin\Debug\System.Windows.Interactivity.xml
