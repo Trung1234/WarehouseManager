@@ -130,7 +130,7 @@
                             </Grid>
                         </Grid>
                     </Button>
-                    <Button Grid.Column="5" ToolTip="Khách hàng">
+                    <Button Grid.Column="5" Command="{Binding CustomerCommand}" ToolTip="Khách hàng">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>

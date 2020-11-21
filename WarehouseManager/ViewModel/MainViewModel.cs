@@ -12,6 +12,7 @@ namespace WarehouseManager.ViewModel
     {
         public bool Isloaded = false;
         public ICommand LoadedWindowCommand { get; set; }
+        public ICommand CustomerCommand { get; set; }
 
         // mọi thứ xử lý sẽ nằm trong này
         public MainViewModel()
@@ -22,6 +23,11 @@ namespace WarehouseManager.ViewModel
                 loginWindow.ShowDialog();
             }
            );
+            CustomerCommand = new RelayCommand<object>((p) => { return true; }, (p) => 
+            { 
+                CustomerWindow wd = new CustomerWindow();
+                wd.ShowDialog(); 
+            });
         }
     }
 }
