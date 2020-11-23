@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b8bd9545606542b68b61255e3e6583c4" Name="Diagram1">
+        <EntityTypeShape EntityType="WarehouseModel.Customer" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Input" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.InputInfo" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Object" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Output" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.OutputInfo" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Suplier" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Unit" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.UserRole" Width="1.5" PointX="8.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.User" Width="1.5" PointX="11" PointY="8.875" IsExpanded="true" />
+        <AssociationConnector Association="WarehouseModel.FK__OutputInf__IdCus__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK__InputInfo__IdInp__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK__InputInfo__IdObj__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK__Object__IdSuplie__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK__Object__IdUnit__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK__OutputInf__IdObj__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK__OutputInfo__Id__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK__Users__IdRole__3E52440B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
