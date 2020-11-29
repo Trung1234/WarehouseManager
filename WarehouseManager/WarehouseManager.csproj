@@ -156,6 +156,7 @@
     </Compile>
     <Compile Include="ViewModel\BaseViewModel .cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Page Include="ControlBarUC.xaml">
       <SubType>Designer</SubType>
