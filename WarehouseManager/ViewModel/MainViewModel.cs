@@ -1,16 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using WarehouseManager.Model;
 
 namespace WarehouseManager.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
         public bool Isloaded = false;
+        private ObservableCollection<Inventory> inventories;
+        public ObservableCollection<Inventory> Inventories
+        {
+            get => inventories;
+            set 
+            {
+                inventories = value;
+                OnPropertyChanged("Inventories"); 
+            } 
+        }
         public ICommand LoadedWindowCommand { get; set; }
         public ICommand UnitCommand { get; set; }
         public ICommand SuplierCommand { get; set; }
@@ -41,6 +53,7 @@ namespace WarehouseManager.ViewModel
                 if (loginVM.IsLogin)
                 {
                     p.Show();
+                    Inventories = GetInventories();
                 }
                 else
                 {
@@ -92,6 +105,29 @@ namespace WarehouseManager.ViewModel
             });
         }
 
+        private ObservableCollection<Inventory> GetInventories()
+        {
+            ObservableCollection<Inventory>  result = new ObservableCollection<Inventory>();
 
+            var objectList = DataProvider.Ins.DB.Objects;
+
+            int i = 1;
+            foreach (var item in objectList)
+            {
+                var inputList = DataProvider.Ins.DB.InputInfoes.Where(p => p.IdObject == item.Id);
+                var outputList = DataProvider.Ins.DB.OutputInfoes.Where(p => p.IdObject == item.Id);
+
+                int sumInput = inputList != null? (int)inputList.Sum(p => p.Count): 0;
+                int sumOutput = outputList != null ? (int)outputList.Sum(p => p.Count) : 0;
+                result.Add(new Inventory
+                {
+                    OrderNumber = i,
+                    Quantity = sumInput - sumOutput,
+                    Object = item
+                }); 
+                i++;
+            }
+            return result;
+        }
     }
 }

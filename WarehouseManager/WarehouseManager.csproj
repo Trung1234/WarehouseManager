@@ -100,6 +100,7 @@
     <Compile Include="Model\InputInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Inventory.cs" />
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -257,6 +258,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="SQLScript\insert.sql" />
     <Content Include="SQLScript\script.sql" />
   </ItemGroup>
   <ItemGroup>
