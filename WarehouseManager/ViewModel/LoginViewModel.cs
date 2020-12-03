@@ -57,7 +57,7 @@ namespace WarehouseManager.ViewModel
                 return;
             // pass = admin
             string passEncode = MD5Hash(Base64Encode(Password));
-            int accCount = DataProvider.Ins.DB.Users.Count(x => 
+            int accCount = DataProvider.Instance.DB.Users.Count(x => 
                                     x.UserName.Equals(UserName)
                                     && x.Password.Equals(passEncode));
             if (accCount > 0)

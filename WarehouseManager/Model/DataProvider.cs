@@ -9,7 +9,7 @@ namespace WarehouseManager.Model
     public class DataProvider
     {
         private static DataProvider _ins;
-        public static DataProvider Ins
+        public static DataProvider Instance
         {
             get
             {
@@ -28,6 +28,19 @@ namespace WarehouseManager.Model
         private DataProvider()
         {
             DB = new WarehouseEntities();
+        }
+        public IEnumerable<Inventory> GetInventories()
+        {
+            IEnumerable<Inventory> inventories = null;
+            try
+            {
+                inventories = DB.Database.SqlQuery<Inventory>("exec GetInventoryData ");
+                return inventories;
+            }
+            catch(Exception ex)
+            {
+                return new List<Inventory>();
+            }    
         }
     }
 }

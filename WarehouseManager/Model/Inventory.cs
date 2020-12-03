@@ -8,8 +8,8 @@ namespace WarehouseManager.Model
 {
     public class Inventory
     {
-        public int OrderNumber { get; set; }
-        public Object Object { get; set; }
+        public long SerialNumber { get; set; }
+        public string DisplayName { get; set; }
         public int Quantity { get; set; }
     }
 }

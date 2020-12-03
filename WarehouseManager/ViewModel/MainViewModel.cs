@@ -105,29 +105,41 @@ namespace WarehouseManager.ViewModel
             });
         }
 
+        /// <summary>
+        /// get all Inventory info using store proc
+        /// </summary>
+        /// <returns></returns>
         private ObservableCollection<Inventory> GetInventories()
         {
-            ObservableCollection<Inventory>  result = new ObservableCollection<Inventory>();
-
-            var objectList = DataProvider.Ins.DB.Objects;
-
-            int i = 1;
-            foreach (var item in objectList)
+            ObservableCollection<Inventory> result = new ObservableCollection<Inventory>();
+            var inventoryData = DataProvider.Instance.GetInventories();
+            foreach (var data in inventoryData)
             {
-                var inputList = DataProvider.Ins.DB.InputInfoes.Where(p => p.IdObject == item.Id);
-                var outputList = DataProvider.Ins.DB.OutputInfoes.Where(p => p.IdObject == item.Id);
-
-                int sumInput = inputList != null? (int)inputList.Sum(p => p.Count): 0;
-                int sumOutput = outputList != null ? (int)outputList.Sum(p => p.Count) : 0;
-                result.Add(new Inventory
-                {
-                    OrderNumber = i,
-                    Quantity = sumInput - sumOutput,
-                    Object = item
-                }); 
-                i++;
+                result.Add(data);
             }
             return result;
         }
+        //public ObservableCollection<Inventory> GetInventories()
+        //{
+        //    var objectList = DataProvider.Ins.DB.Objects;
+
+        //    int i = 1;
+        //    foreach (var item in objectList)
+        //    {
+        //        var inputList = DataProvider.Ins.DB.InputInfoes.Where(p => p.IdObject == item.Id);
+        //        var outputList = DataProvider.Ins.DB.OutputInfoes.Where(p => p.IdObject == item.Id);
+
+        //        int sumInput = inputList != null ? (int)inputList.Sum(p => p.Count) : 0;
+        //        int sumOutput = outputList != null ? (int)outputList.Sum(p => p.Count) : 0;
+        //        result.Add(new Inventory
+        //        {
+        //            OrderNumber = i,
+        //            Quantity = sumInput - sumOutput,
+        //            Object = item
+        //        });
+        //        i++;
+        //    }
+        //    return result;
+        //}
     }
 }

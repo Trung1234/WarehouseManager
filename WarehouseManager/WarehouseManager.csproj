@@ -258,6 +258,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="SQLScript\GetInventoryData.sql" />
     <Content Include="SQLScript\insert.sql" />
     <Content Include="SQLScript\script.sql" />
   </ItemGroup>

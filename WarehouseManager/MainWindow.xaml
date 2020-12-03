@@ -341,8 +341,8 @@
                             <ListView ItemsSource="{Binding Inventories}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding OrderNumber}"></GridViewColumn>
-                                        <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding Object.DisplayName}"></GridViewColumn>
+                                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding SerialNumber}"></GridViewColumn>
+                                        <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
                                         <GridViewColumn Header="Số lượng tồn" DisplayMemberBinding="{Binding Quantity}"></GridViewColumn>
                                     </GridView>
                                 </ListView.View>
