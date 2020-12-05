@@ -53,7 +53,7 @@ namespace WarehouseManager.ViewModel
                 if (loginVM.IsLogin)
                 {
                     p.Show();
-                    Inventories = GetInventories();
+                    Inventories = new ObservableCollection<Inventory>(DataProvider.Instance.GetInventories());
                 }
                 else
                 {
@@ -105,20 +105,7 @@ namespace WarehouseManager.ViewModel
             });
         }
 
-        /// <summary>
-        /// get all Inventory info using store proc
-        /// </summary>
-        /// <returns></returns>
-        private ObservableCollection<Inventory> GetInventories()
-        {
-            ObservableCollection<Inventory> result = new ObservableCollection<Inventory>();
-            var inventoryData = DataProvider.Instance.GetInventories();
-            foreach (var data in inventoryData)
-            {
-                result.Add(data);
-            }
-            return result;
-        }
+
         //public ObservableCollection<Inventory> GetInventories()
         //{
         //    var objectList = DataProvider.Ins.DB.Objects;

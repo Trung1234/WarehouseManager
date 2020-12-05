@@ -29,6 +29,10 @@ namespace WarehouseManager.Model
         {
             DB = new WarehouseEntities();
         }
+        /// <summary>
+        /// get all Inventory info using store proc
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Inventory> GetInventories()
         {
             IEnumerable<Inventory> inventories = null;
