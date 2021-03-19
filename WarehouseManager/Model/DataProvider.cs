@@ -41,7 +41,7 @@ namespace WarehouseManager.Model
                 inventories = DB.Database.SqlQuery<Inventory>("exec GetInventoryData ");
                 return inventories;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return new List<Inventory>();
             }    

@@ -100,7 +100,7 @@
     <Compile Include="Model\InputInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Inventory.cs" />
+    <Compile Include="Model\ModelExtended\Inventory.cs" />
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,6 +157,9 @@
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utility\ExportFileFactory.cs" />
+    <Compile Include="Utility\IExportFile.cs" />
+    <Compile Include="Utility\StringUtil.cs" />
     <Compile Include="ViewModel\BaseViewModel .cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

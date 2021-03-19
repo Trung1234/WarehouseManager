@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WarehouseManager.Model;
+using WarehouseManager.Utility;
 
 namespace WarehouseManager.ViewModel
 {
@@ -56,7 +57,7 @@ namespace WarehouseManager.ViewModel
             if (p == null)
                 return;
             // pass = admin
-            string passEncode = MD5Hash(Base64Encode(Password));
+            string passEncode = StringUtil.MD5Hash(StringUtil.Base64Encode(Password));
             int accCount = DataProvider.Instance.DB.Users.Count(x => 
                                     x.UserName.Equals(UserName)
                                     && x.Password.Equals(passEncode));
@@ -70,35 +71,6 @@ namespace WarehouseManager.ViewModel
                 IsLogin = false;
                 MessageBox.Show("Sai tài khoản hoặc mật khẩu!");
             }
-        }
-
-        /// <summary>
-        /// convert string to base64
-        /// </summary>
-        /// <param name="plainText"></param>
-        /// <returns></returns>
-        public static string Base64Encode(string plainText)
-        {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
-        }
-
-        /// <summary>
-        /// convert string to MD5
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public static string MD5Hash(string input)
-        {
-            StringBuilder hash = new StringBuilder();
-            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
-            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
-
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                hash.Append(bytes[i].ToString("x2"));
-            }
-            return hash.ToString();
-        }
+        }        
     }
 }
