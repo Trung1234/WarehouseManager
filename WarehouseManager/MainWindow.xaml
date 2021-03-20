@@ -319,6 +319,7 @@
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
@@ -336,8 +337,15 @@
                             <Grid Grid.Column="3">
                                 <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="5"
                                             Width="100"
-                                        Click="Export_Click" 
-                                            Content="Export"
+                                            Command="{Binding ExportCsvCommand}"
+                                            Content="Export csv"
+                                            ToolTip="Resource name: MaterialDesignRaisedButton"></Button>
+                            </Grid>
+                            <Grid Grid.Column="4">
+                                <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="5"
+                                            Width="120"
+                                            Command="{Binding ExportExcelCommand}"
+                                            Content="Export Excel"
                                             ToolTip="Resource name: MaterialDesignRaisedButton"></Button>
                             </Grid>
                         </Grid>

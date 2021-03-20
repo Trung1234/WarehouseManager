@@ -24,5 +24,6 @@ namespace WarehouseManager
         {
             InitializeComponent();
         }
+
     }
 }
