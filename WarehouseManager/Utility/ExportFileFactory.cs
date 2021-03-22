@@ -19,8 +19,7 @@ namespace WarehouseManager.Utility
                     return new ExportExcelFile();
                 default:
                     return new ExportCsvFile();
-            }
-            
+            }           
         }
     }
 }

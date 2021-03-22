@@ -42,6 +42,7 @@ namespace WarehouseManager.Utility
             }
             catch(Exception ex)
             {
+                LoggerManager.LogError(nameof(ExportCsvFile), nameof(Export), ex);
                 return false;
             }          
             return true;

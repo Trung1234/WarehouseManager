@@ -119,7 +119,7 @@
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Log\Logger.cs" />
+    <Compile Include="Log\LoggerManager.cs" />
     <Compile Include="Model\Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

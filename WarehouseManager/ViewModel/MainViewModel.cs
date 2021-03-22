@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
+using WarehouseManager.Log;
 using WarehouseManager.Model;
 using WarehouseManager.Utility;
 using static WarehouseManager.Utility.Constant;
@@ -35,7 +36,7 @@ namespace WarehouseManager.ViewModel
         public ICommand UserCommand { get; set; }
         public ICommand InputCommand { get; set; }
         public ICommand OutputCommand { get; set; }
-        public ICommand ExportCsvCommand { get; set; }
+        // public ICommand ExportCsvCommand { get; set; }
         //public ICommand ExportExcelCommand { get; set; }
         public ICommand ExportExcelCommand 
         { 
@@ -46,6 +47,19 @@ namespace WarehouseManager.ViewModel
                 });
             } 
         }
+
+        public ICommand ExportCsvCommand
+        {
+            get
+            {
+                return new RelayCommand<object>((p) => { return true; }, (p) =>
+                {
+                    OnExportCsvCommand();
+                });
+            }
+        }
+ 
+
         private IEnumerable<Inventory> inventoryList;
 
         /// <summary>
@@ -122,50 +136,53 @@ namespace WarehouseManager.ViewModel
                     UserWindow wd = new UserWindow();
                     wd.ShowDialog();
                 });
-                bool canExport = true;
-                ExportCsvCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-                {
-                    canExport = ExportFileFactory.CreateFactory(ExportMode.Csv).Export(inventoryList.ToList());
-                    if (canExport)
-                    {
-                        // Confirm to the user it has been completed.
-                        System.Windows.MessageBox.Show("CSV file  đã được lưu.");
-                    }
-                    else{
-                        System.Windows.MessageBox.Show("Có lỗi xảy ra khi lưu file .");
-                    }
-                });
-                //ExportExcelCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-                //{
-                //    canExport = ExportFileFactory.CreateFactory(ExportMode.Excel).Export(inventoryList.ToList());
-                //    if (canExport)
-                //    {
-                //        // Confirm to the user it has been completed.
-                //        System.Windows.MessageBox.Show("Excel file  đã được lưu.");
-                //    }
-                //    else
-                //    {
-                //        System.Windows.MessageBox.Show("Có lỗi xảy ra khi lưu Excel .");
-                //    }
-                //});
             }
             catch(Exception ex)
             {
-
+                LoggerManager.LogError(nameof(MainViewModel), nameof(MainViewModel), ex);
             }             
         }
-        private void OnExportExcelCommand()
+
+        private void OnExportCsvCommand()
         {
-            bool canExport = ExportFileFactory.CreateFactory(ExportMode.Excel).Export(inventoryList.ToList());
-            if (canExport)
+            if (inventoryList != null || inventoryList.Count() > 0)
             {
-                // Confirm to the user it has been completed.
-                System.Windows.MessageBox.Show("Excel file  đã được lưu.");
+                bool canExport = ExportFileFactory.CreateFactory(ExportMode.Csv).Export(inventoryList.ToList());
+                if (canExport)
+                {
+                    // Confirm to the user it has been completed.
+                    System.Windows.MessageBox.Show("Excel file  đã được lưu.");
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Có lỗi xảy ra khi lưu Excel .");
+                }
             }
             else
             {
-                System.Windows.MessageBox.Show("Có lỗi xảy ra khi lưu Excel .");
+                System.Windows.MessageBox.Show("Không có hàng tồn nào cả.");
             }
+        }
+
+        private void OnExportExcelCommand()
+        {
+            if(inventoryList != null || inventoryList.Count() > 0)
+            {
+                bool canExport = ExportFileFactory.CreateFactory(ExportMode.Excel).Export(inventoryList.ToList());
+                if (canExport)
+                {
+                    // Confirm to the user it has been completed.
+                    System.Windows.MessageBox.Show("Excel file  đã được lưu.");
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Có lỗi xảy ra khi lưu Excel .");
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Không có hàng tồn nào cả.");
+            }            
          }
         //public ObservableCollection<Inventory> GetInventories()
         //{

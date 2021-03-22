@@ -19,11 +19,22 @@ namespace WarehouseManager.Log
             else
                 ThreadPool.QueueUserWorkItem(temp => log.Error(info, ex));
         }
+        /// <summary>
+        /// Log Error
+        /// </summary>
+        /// <param name="className"></param>
+        /// <param name="methodName"></param>
+        /// <param name="exception"></param>
         public static void LogError(string className, string methodName, Exception exception)
         {
             log.Info(String.Format("Class Name: {0} ,Method: {1} ,Exception Message: {2} ,StackTrace: {3}", 
                 className, methodName,exception.Message,exception.StackTrace));
         }
+        /// <summary>
+        /// Log Info
+        /// </summary>
+        /// <param name="className"></param>
+        /// <param name="methodName"></param>
         public static void LogInfo(string className, string methodName)
         {
             log.Info(String.Format("Class Name: {0} ,Method: {1}", className, methodName));

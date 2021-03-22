@@ -26,10 +26,9 @@ namespace WarehouseManager.Utility
                     ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet 1");
                  
                     int totalRows = inventories.Count;
-                    //add some text to cell A1
-                    worksheet.Cells[1, 2].Value = " SerialNumber";
-                    worksheet.Cells[1, 3].Value = " DisplayName";
-                    worksheet.Cells[1, 4].Value = " Quantity";
+                    worksheet.Cells[1, 2].Value = "STT";
+                    worksheet.Cells[1, 3].Value = " Tên vật tư";
+                    worksheet.Cells[1, 4].Value = " Số lượng tồn";
                     int i = 0;
                     for (int row = 2; row <= totalRows + 1; row++)
                     {
