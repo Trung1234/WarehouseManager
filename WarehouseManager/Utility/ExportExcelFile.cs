@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WarehouseManager.Log;
 using WarehouseManager.Model;
 
 namespace WarehouseManager.Utility
@@ -14,6 +15,7 @@ namespace WarehouseManager.Utility
     {
         public bool Export(List<Inventory> inventories)
         {
+            LoggerManager.LogInfo(nameof(ExportExcelFile), nameof(Export));
             try
             { 
                 // use EPPlus in a noncommercial context according to the Polyform Noncommercial license:
@@ -54,8 +56,10 @@ namespace WarehouseManager.Utility
             }
             catch (Exception ex)
             {
+                LoggerManager.LogError(nameof(ExportExcelFile), nameof(Export),ex);
                 return false;
             }
+            LoggerManager.LogInfo(nameof(ExportExcelFile), nameof(Export));
             return true;           
         }
     }

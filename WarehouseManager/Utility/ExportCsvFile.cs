@@ -1,8 +1,10 @@
 ﻿
+
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using WarehouseManager.Log;
 using WarehouseManager.Model;
 
 namespace WarehouseManager.Utility
@@ -12,6 +14,7 @@ namespace WarehouseManager.Utility
        
         public bool Export(List<Inventory> inventories)
         {
+            LoggerManager.LogInfo(nameof(ExportCsvFile), nameof(Export));
             try
             {
                 StringBuilder sb = new StringBuilder();
