@@ -3,6 +3,7 @@
  - use state = enitystate.modified
  - use Relaycommand of GalaxySoft.MvvmLight instead of Relaycommand of WarehouseManager.ViewModel
  - rename Relaycommand of WarehouseManager.ViewModel -> WMRelaycommand
+ - add AsNoTracking to get inventories
 # Warehouse Manager
 Desktop Application for Warehouse Management using WPF framework
  - use Factory pattern to manage Objects for Export
