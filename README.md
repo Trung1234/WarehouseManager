@@ -1,5 +1,6 @@
 # To do
  - use Transaction and Log to handle add and edit 
+ - use state = enitystate.modified
 # Warehouse Manager
 Desktop Application for Warehouse Management using WPF framework
  - use Factory pattern to manage Objects for Export
