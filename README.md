@@ -1,5 +1,5 @@
 # To do
- - use Transaction and Log to handle add and edit 
+ - use Transaction and Log to handle add and edit https://docs.microsoft.com/en-us/ef/ef6/saving/transactions
  - use state = enitystate.modified
 # Warehouse Manager
 Desktop Application for Warehouse Management using WPF framework
