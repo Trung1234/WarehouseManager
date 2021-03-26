@@ -1,3 +1,5 @@
+# To do
+ - use Transaction and Log to handle add and edit 
 # Warehouse Manager
 WPF App for Warehouse Management
  - use Factory pattern to manage Objects for Export
