@@ -1,7 +1,8 @@
 # To do
  - use Transaction and Log to handle add and edit https://docs.microsoft.com/en-us/ef/ef6/saving/transactions
  - use state = enitystate.modified
- - Do not use Relaycommand of WarehouseManager.ViewModel, use Relaycommand of GalaxySoft.MvvmLight
+ - use Relaycommand of GalaxySoft.MvvmLight instead of Relaycommand of WarehouseManager.ViewModel
+ - rename Relaycommand of WarehouseManager.ViewModel -> WMRelaycommand
 # Warehouse Manager
 Desktop Application for Warehouse Management using WPF framework
  - use Factory pattern to manage Objects for Export
