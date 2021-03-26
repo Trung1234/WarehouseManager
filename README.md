@@ -1,7 +1,7 @@
 # To do
  - use Transaction and Log to handle add and edit 
 # Warehouse Manager
-WPF App for Warehouse Management
+Destop Application for Warehouse Management using WPF framework
  - use Factory pattern to manage Objects for Export
  - use Singleton pattern to create DataProvider layer between DB Model and ViewModel
  - use MD5CryptoService to encrypt password
