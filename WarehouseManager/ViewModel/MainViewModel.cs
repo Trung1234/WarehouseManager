@@ -20,12 +20,6 @@ namespace WarehouseManager.ViewModel
     public class MainViewModel : BaseViewModel
     {
         #region Properites
-        public bool isloaded = false;
-        public bool Isloaded
-        {
-            get { return isloaded; }
-            set { isloaded = value; }
-        }
         private ObservableCollection<Inventory> inventories;
         public ObservableCollection<Inventory> Inventories
         {
@@ -49,12 +43,7 @@ namespace WarehouseManager.ViewModel
             }
         }
 
-        private void OpenUnitWindow()
-        {
-            UnitWindow wd = new UnitWindow();
-            wd.ShowDialog();
-        }
-
+        
         public ICommand SuplierCommand
         {
             get
@@ -74,6 +63,7 @@ namespace WarehouseManager.ViewModel
         public ICommand UserCommand { get; set; }
         public ICommand InputCommand { get; set; }
         public ICommand OutputCommand { get; set; }
+
         public ICommand ExportExcelCommand
         {
             get
@@ -99,7 +89,6 @@ namespace WarehouseManager.ViewModel
             try
             {
                 LoadedWindowCommand = new WMRelayCommand<Window>((p) => { return true; }, (p) => {
-                    Isloaded = true;
                     if (p == null)
                         return;
                     p.Hide();
@@ -121,8 +110,7 @@ namespace WarehouseManager.ViewModel
                         {
                             LoggerManager.LogError(nameof(MainViewModel), nameof(MainViewModel), ex);
                             Inventories = new ObservableCollection<Inventory>();
-                        }
-                        
+                        }                       
                     }
                     else
                     {
@@ -143,6 +131,13 @@ namespace WarehouseManager.ViewModel
             CustomerWindow cwd = new CustomerWindow();
             cwd.ShowDialog();
         }
+
+        private void OpenUnitWindow()
+        {
+            UnitWindow wd = new UnitWindow();
+            wd.ShowDialog();
+        }
+
         private void OpenSuplierWindow()
         {
             SuplierWindow wd = new SuplierWindow();
