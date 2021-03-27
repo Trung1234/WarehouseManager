@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -27,12 +28,13 @@ namespace WarehouseManager.Model
             }
         }
 
-        public WarehouseEntities DB { get; set; }
+        public WarehouseEntities Context { get; set; }
 
         private DataProvider()
         {
-            DB = new WarehouseEntities();
+            Context = new WarehouseEntities();
         }
+
         /// <summary>
         /// get all Inventory info using store proc
         /// </summary>
@@ -42,7 +44,7 @@ namespace WarehouseManager.Model
             IEnumerable<Inventory> inventories = null;
             try
             {
-                inventories = DB.Database.SqlQuery<Inventory>("exec GetInventoryData ");
+                inventories = Context.Database.SqlQuery<Inventory>("exec GetInventoryData ");
                 return inventories;
             }           
             catch (Exception ex)

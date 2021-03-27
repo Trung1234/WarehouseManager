@@ -14,6 +14,11 @@ namespace WarehouseManager.Utility
 {
     public class ExportExcelFile : IExportFile
     {
+        /// <summary>
+        /// export excel file
+        /// </summary>
+        /// <param name="inventories"></param>
+        /// <returns></returns>
         public ExportResult Export(List<Inventory> inventories)
         {
             LoggerManager.LogInfo(nameof(ExportExcelFile), nameof(Export));

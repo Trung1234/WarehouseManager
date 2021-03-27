@@ -13,6 +13,11 @@ namespace WarehouseManager.Utility
     public class ExportCsvFile : IExportFile
     {
        
+        /// <summary>
+        /// export csv file
+        /// </summary>
+        /// <param name="inventories"></param>
+        /// <returns></returns>
         public ExportResult Export(List<Inventory> inventories)
         {
             LoggerManager.LogInfo(nameof(ExportCsvFile), nameof(Export));

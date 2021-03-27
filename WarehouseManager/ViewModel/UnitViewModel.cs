@@ -8,6 +8,7 @@ using System.Windows.Input;
 using WarehouseManager.Model;
 using WarehouseManager.Model.ModelExtended;
 using WarehouseManager.Proccess;
+using WarehouseManager.Utility;
 
 namespace WarehouseManager.ViewModel
 {
@@ -41,7 +42,7 @@ namespace WarehouseManager.ViewModel
         {
             UnitService UnitService = new UnitService();
             List = new ObservableCollection<UserModel>();
-            var units = DataProvider.Instance.DB.Units;
+            var units = DataProvider.Instance.Context.Units;
             foreach (var unit in units)
             {
                 List.Add(new UserModel
@@ -70,8 +71,11 @@ namespace WarehouseManager.ViewModel
 
             }, (p) =>
             {
-                UnitService.Edit(SelectedItem.Id, DisplayName);        
-                SelectedItem.DisplayName = DisplayName;
+                int result = UnitService.Edit(SelectedItem.Id, DisplayName);
+                if(result == Constant.ErrorCode)
+                    System.Windows.MessageBox.Show("Có lỗi xảy ra khi sửa đơn vị.");
+                else
+                    SelectedItem.DisplayName = DisplayName;
             });
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarehouseManager.Utility
 {
-    public class Constant
+    public static class Constant
     {
         public enum ExportMode
         {
@@ -19,6 +19,7 @@ namespace WarehouseManager.Utility
             Error,
             Success,
         }
+        public const int ErrorCode = 0;
         public const string ErrorFileMessage = "Có lỗi xảy ra khi lưu file .";
         public const string InventoryNotExist =  "Không có hàng tồn nào cả.";
     }
