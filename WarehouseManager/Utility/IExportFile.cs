@@ -6,11 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarehouseManager.Model;
+using static WarehouseManager.Utility.Constant;
 
 namespace WarehouseManager.Utility
 {
     public interface IExportFile
     {
-        bool Export(List<Inventory> inventories);
+        ExportResult Export(List<Inventory> inventories);
     }
 }

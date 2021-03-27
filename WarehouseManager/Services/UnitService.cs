@@ -8,7 +8,7 @@ using WarehouseManager.Model.ModelExtended;
 
 namespace WarehouseManager.Proccess
 {
-    public class UnitProcess
+    public class UnitService
     {
         /// <summary>
         /// Condition for AddCommand or Editmand

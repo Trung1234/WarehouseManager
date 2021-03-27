@@ -15,7 +15,6 @@ namespace WarehouseManager.ViewModel
     {
         private ObservableCollection<UserModel> _List;
         public ObservableCollection<UserModel> List { get => _List; set { _List = value; OnPropertyChanged(); } }
-        private readonly UnitProcess unitProcess = new UnitProcess();
         private UserModel _SelectedItem;
         public UserModel SelectedItem
         {
@@ -40,6 +39,7 @@ namespace WarehouseManager.ViewModel
 
         public UnitViewModel()
         {
+            UnitService UnitService = new UnitService();
             List = new ObservableCollection<UserModel>();
             var units = DataProvider.Instance.DB.Units;
             foreach (var unit in units)
@@ -50,27 +50,27 @@ namespace WarehouseManager.ViewModel
                     DisplayName = unit.DisplayName
                 });
             }
-            AddCommand = new RelayCommand<object>((p) =>
+            AddCommand = new WMRelayCommand<object>((p) =>
             {
                 //condition for excuting AddCommand
-                return unitProcess.CanAddOrEdit(DisplayName);
+                return UnitService.CanAddOrEdit(DisplayName);
             }, (p) =>
             {
-                var newUnit = unitProcess.Add(DisplayName);
+                var newUnit = UnitService.Add(DisplayName);
                 List.Add(new UserModel() { 
                     Id = newUnit.Id,
                     DisplayName = DisplayName
                 });
             });
 
-            EditCommand = new RelayCommand<object>((p) =>
+            EditCommand = new WMRelayCommand<object>((p) =>
             {
                 //condition for excuting EditCommand
-                return unitProcess.CanAddOrEdit(DisplayName, SelectedItem, true);
+                return UnitService.CanAddOrEdit(DisplayName, SelectedItem, true);
 
             }, (p) =>
             {
-                unitProcess.Edit(SelectedItem.Id, DisplayName);        
+                UnitService.Edit(SelectedItem.Id, DisplayName);        
                 SelectedItem.DisplayName = DisplayName;
             });
         }

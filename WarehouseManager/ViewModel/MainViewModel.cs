@@ -1,7 +1,9 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,60 +19,86 @@ namespace WarehouseManager.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        public bool Isloaded = false;
+        #region Properites
+        public bool isloaded = false;
+        public bool Isloaded
+        {
+            get { return isloaded; }
+            set { isloaded = value; }
+        }
         private ObservableCollection<Inventory> inventories;
         public ObservableCollection<Inventory> Inventories
         {
             get => inventories;
-            set 
+            set
             {
                 inventories = value;
-                OnPropertyChanged("Inventories"); 
-            } 
-        }
+                OnPropertyChanged("Inventories");
+            }
+        } 
+        #endregion
+
+        #region Command Region
         public ICommand LoadedWindowCommand { get; set; }
-        public ICommand UnitCommand { get; set; }
-        public ICommand SuplierCommand { get; set; }
-        public ICommand CustomerCommand { get; set; }
+
+        public ICommand UnitCommand
+        {
+            get
+            {
+                return new RelayCommand(() => OpenUnitWindow());
+            }
+        }
+
+        private void OpenUnitWindow()
+        {
+            UnitWindow wd = new UnitWindow();
+            wd.ShowDialog();
+        }
+
+        public ICommand SuplierCommand
+        {
+            get
+            {
+                return new RelayCommand(() => OpenSuplierWindow());
+            }
+        }
+
+        public ICommand CustomerCommand
+        {
+            get
+            {
+                return new RelayCommand(() => OpenCustomerWindow());
+            }
+        }
         public ICommand ObjectCommand { get; set; }
         public ICommand UserCommand { get; set; }
         public ICommand InputCommand { get; set; }
         public ICommand OutputCommand { get; set; }
-        // public ICommand ExportCsvCommand { get; set; }
-        //public ICommand ExportExcelCommand { get; set; }
-        public ICommand ExportExcelCommand 
-        { 
-            get{
-                return new RelayCommand<object>((p) => { return true; }, (p) =>
-                {
-                    OnExportExcelCommand();
-                });
-            } 
+        public ICommand ExportExcelCommand
+        {
+            get
+            {
+                return new RelayCommand(() => OnExportExcelCommand());
+            }
         }
 
         public ICommand ExportCsvCommand
         {
             get
             {
-                return new RelayCommand<object>((p) => { return true; }, (p) =>
-                {
-                    OnExportCsvCommand();
-                });
+                return new RelayCommand(() => OnExportCsvCommand());
             }
-        }
- 
-
-        private IEnumerable<Inventory> inventoryList;
+        } 
+        #endregion
 
         /// <summary>
-        /// logic events for MainViewdow
+        /// constructor for MainViewdow
         /// </summary>
         public MainViewModel()
         {
-            CustomerWindow cwd = null;
             try
             {
-                LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+                LoadedWindowCommand = new WMRelayCommand<Window>((p) => { return true; }, (p) => {
                     Isloaded = true;
                     if (p == null)
                         return;
@@ -85,8 +113,16 @@ namespace WarehouseManager.ViewModel
                     if (loginVM.IsLogin)
                     {
                         p.Show();
-                        inventoryList = DataProvider.Instance.GetInventories();
-                        Inventories = new ObservableCollection<Inventory>(inventoryList);
+                        try
+                        {
+                            Inventories = new ObservableCollection<Inventory>(DataProvider.Instance.GetInventories());
+                        }
+                        catch (SqlException ex)
+                        {
+                            LoggerManager.LogError(nameof(MainViewModel), nameof(MainViewModel), ex);
+                            Inventories = new ObservableCollection<Inventory>();
+                        }
+                        
                     }
                     else
                     {
@@ -94,48 +130,6 @@ namespace WarehouseManager.ViewModel
                     }
                     }
                   );
-
-                CustomerCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-                {
-                    cwd = new CustomerWindow();
-                    cwd.ShowDialog();
-                });
-                InputCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-                {
-                    InputWindow wd = new InputWindow();
-                    wd.ShowDialog();
-                });
-                OutputCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-                {
-                    OutputWindow wd = new OutputWindow();
-                    wd.ShowDialog();
-                });
-
-                UnitCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-                {
-                    UnitWindow wd = new UnitWindow();
-                    wd.ShowDialog();
-                });
-                UnitCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-                {
-                    UnitWindow wd = new UnitWindow();
-                    wd.ShowDialog();
-                });
-                SuplierCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-                {
-                    SuplierWindow wd = new SuplierWindow();
-                    wd.ShowDialog();
-                });
-                ObjectCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-                {
-                    ObjectWindow wd = new ObjectWindow();
-                    wd.ShowDialog();
-                });
-                UserCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-                {
-                    UserWindow wd = new UserWindow();
-                    wd.ShowDialog();
-                });
             }
             catch(Exception ex)
             {
@@ -143,47 +137,61 @@ namespace WarehouseManager.ViewModel
             }             
         }
 
+        #region private method
+        private void OpenCustomerWindow()
+        {
+            CustomerWindow cwd = new CustomerWindow();
+            cwd.ShowDialog();
+        }
+        private void OpenSuplierWindow()
+        {
+            SuplierWindow wd = new SuplierWindow();
+            wd.ShowDialog();
+        }
+
         private void OnExportCsvCommand()
         {
-            if (inventoryList != null || inventoryList.Count() > 0)
+            if (Inventories != null)
             {
-                bool canExport = ExportFileFactory.CreateFactory(ExportMode.Csv).Export(inventoryList.ToList());
-                if (canExport)
+                ExportResult exportResult = ExportFileFactory.CreateFactory(ExportMode.Csv).Export(Inventories.ToList());
+                if (exportResult == ExportResult.Success)
                 {
                     // Confirm to the user it has been completed.
-                    System.Windows.MessageBox.Show("Excel file  đã được lưu.");
+                    System.Windows.MessageBox.Show("Excel file đã được lưu.");
                 }
-                else
+                else if (exportResult == ExportResult.Error)
                 {
-                    System.Windows.MessageBox.Show("Có lỗi xảy ra khi lưu Excel .");
+                    System.Windows.MessageBox.Show(Constant.ErrorFileMessage);
                 }
             }
             else
             {
-                System.Windows.MessageBox.Show("Không có hàng tồn nào cả.");
+                System.Windows.MessageBox.Show(Constant.InventoryNotExist);
             }
         }
 
         private void OnExportExcelCommand()
         {
-            if(inventoryList != null || inventoryList.Count() > 0)
+            if (Inventories != null)
             {
-                bool canExport = ExportFileFactory.CreateFactory(ExportMode.Excel).Export(inventoryList.ToList());
-                if (canExport)
+                ExportResult exportResult = ExportFileFactory.CreateFactory(ExportMode.Excel).Export(Inventories.ToList());
+                if (exportResult == ExportResult.Success)
                 {
                     // Confirm to the user it has been completed.
-                    System.Windows.MessageBox.Show("Excel file  đã được lưu.");
+                    System.Windows.MessageBox.Show("Excel file đã được lưu.");
                 }
-                else
+                else if (exportResult == ExportResult.Error)
                 {
-                    System.Windows.MessageBox.Show("Có lỗi xảy ra khi lưu Excel .");
+                    System.Windows.MessageBox.Show(Constant.ErrorFileMessage);
                 }
             }
             else
             {
-                System.Windows.MessageBox.Show("Không có hàng tồn nào cả.");
-            }            
-         }
+                System.Windows.MessageBox.Show(Constant.InventoryNotExist);
+            }
+        } 
+        #endregion
+
         //public ObservableCollection<Inventory> GetInventories()
         //{
         //    var objectList = DataProvider.Ins.DB.Objects;

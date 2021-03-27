@@ -6,13 +6,14 @@ using System.Text;
 using System.Windows.Forms;
 using WarehouseManager.Log;
 using WarehouseManager.Model;
+using static WarehouseManager.Utility.Constant;
 
 namespace WarehouseManager.Utility
 {
     public class ExportCsvFile : IExportFile
     {
        
-        public bool Export(List<Inventory> inventories)
+        public ExportResult Export(List<Inventory> inventories)
         {
             LoggerManager.LogInfo(nameof(ExportCsvFile), nameof(Export));
             try
@@ -38,14 +39,18 @@ namespace WarehouseManager.Utility
                         // Write the stringbuilder text to the the file.
                         sw.WriteLine(sb.ToString());
                     }
+                }
+                else
+                {
+                    return ExportResult.Cancel;
                 }                
             }
             catch(Exception ex)
             {
                 LoggerManager.LogError(nameof(ExportCsvFile), nameof(Export), ex);
-                return false;
-            }          
-            return true;
+                return ExportResult.Error;
+            }
+            return ExportResult.Success; 
         }
     }
 }

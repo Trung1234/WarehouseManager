@@ -177,7 +177,7 @@
     <Compile Include="OutputWindow.xaml.cs">
       <DependentUpon>OutputWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Proccess\UnitProcess.cs" />
+    <Compile Include="Services\UnitService.cs" />
     <Compile Include="SuplierWindow.xaml.cs">
       <DependentUpon>SuplierWindow.xaml</DependentUpon>
     </Compile>

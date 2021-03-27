@@ -47,9 +47,9 @@ namespace WarehouseManager.ViewModel
             IsLogin = false;
             Password = "";
             UserName = "";
-            LoginCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { ProcessLogin(p); });
-            CloseCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
-            PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
+            LoginCommand = new WMRelayCommand<Window>((p) => { return true; }, (p) => { ProcessLogin(p); });
+            CloseCommand = new WMRelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
+            PasswordChangedCommand = new WMRelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
         }
 
         private void ProcessLogin(Window p)

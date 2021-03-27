@@ -13,5 +13,13 @@ namespace WarehouseManager.Utility
             Csv,
             Excel,
         }
+        public enum ExportResult
+        {
+            Cancel,
+            Error,
+            Success,
+        }
+        public const string ErrorFileMessage = "Có lỗi xảy ra khi lưu file .";
+        public const string InventoryNotExist =  "Không có hàng tồn nào cả.";
     }
 }

@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WarehouseManager.Log;
+using WarehouseManager.ViewModel;
 
 namespace WarehouseManager.Model
 {
@@ -40,11 +44,12 @@ namespace WarehouseManager.Model
             {
                 inventories = DB.Database.SqlQuery<Inventory>("exec GetInventoryData ");
                 return inventories;
-            }
-            catch(Exception)
+            }           
+            catch (Exception ex)
             {
+                LoggerManager.LogError(nameof(DataProvider), nameof(GetInventories), ex);
                 return new List<Inventory>();
-            }    
+            }
         }
     }
 }

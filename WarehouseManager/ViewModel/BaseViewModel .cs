@@ -18,12 +18,12 @@ namespace WarehouseManager.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    class RelayCommand<T> : ICommand
+    class WMRelayCommand<T> : ICommand
     {
         private readonly Predicate<T> _canExecute;
         private readonly Action<T> _execute;
 
-        public RelayCommand(Predicate<T> canExecute, Action<T> execute)
+        public WMRelayCommand(Predicate<T> canExecute, Action<T> execute)
         {
             if (execute == null)
                 throw new ArgumentNullException("execute");

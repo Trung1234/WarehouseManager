@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarehouseManager.Log;
 using WarehouseManager.Model;
+using static WarehouseManager.Utility.Constant;
 
 namespace WarehouseManager.Utility
 {
     public class ExportExcelFile : IExportFile
     {
-        public bool Export(List<Inventory> inventories)
+        public ExportResult Export(List<Inventory> inventories)
         {
             LoggerManager.LogInfo(nameof(ExportExcelFile), nameof(Export));
             try
@@ -51,15 +52,19 @@ namespace WarehouseManager.Utility
                         //write the file to the disk
                         excelPackage.SaveAs(fi);
                     }
+                    else
+                    {
+                        return ExportResult.Cancel;
+                    }
                 }
             }
             catch (Exception ex)
             {
                 LoggerManager.LogError(nameof(ExportExcelFile), nameof(Export),ex);
-                return false;
+                return ExportResult.Error;
             }
             LoggerManager.LogInfo(nameof(ExportExcelFile), nameof(Export));
-            return true;           
+            return ExportResult.Success;           
         }
     }
 }

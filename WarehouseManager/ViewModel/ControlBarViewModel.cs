@@ -20,7 +20,7 @@ namespace WarehouseManager.ViewModel
 
         public ControlBarViewModel()
         {
-            CloseWindowCommand = new RelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) => {
+            CloseWindowCommand = new WMRelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) => {
                 FrameworkElement window = GetWindowParent(p);
                 var w = window as Window;
                 if (w != null)
@@ -29,7 +29,7 @@ namespace WarehouseManager.ViewModel
                 }
             }
             );
-            MaximizeWindowCommand = new RelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) =>
+            MaximizeWindowCommand = new WMRelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) =>
             {
                 FrameworkElement window = GetWindowParent(p);
                 var w = window as Window;
@@ -42,7 +42,7 @@ namespace WarehouseManager.ViewModel
                 }
             }
             );
-            MinimizeWindowCommand = new RelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) =>
+            MinimizeWindowCommand = new WMRelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) =>
             {
                 FrameworkElement window = GetWindowParent(p);
                 var w = window as Window;
@@ -55,7 +55,7 @@ namespace WarehouseManager.ViewModel
                 }
             }
             );
-            MouseMoveWindowCommand = new RelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) =>
+            MouseMoveWindowCommand = new WMRelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) =>
             {
                 FrameworkElement window = GetWindowParent(p);
                 var w = window as Window;
