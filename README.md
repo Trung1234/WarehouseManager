@@ -13,4 +13,4 @@ Desktop Application for Warehouse Management using WPF framework
    - Reference: https://docs.microsoft.com/en-us/visualstudio/xaml-tools/inspect-xaml-properties-while-debugging?view=vs-2019
 ## Reference: 
  - https://www.c-sharpcorner.com/UploadFile/puranindia/wpf-interview-questions-and-answers/
- - https://www.c-sharpcorner.com/UploadFile/puranindia/wpf-interview-questions-and-answers/
+ - https://www.c-sharpcorner.com/UploadFile/0b73e1/mvvm-model-view-viewmodel-introduction-part-2/
