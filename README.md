@@ -11,3 +11,5 @@ Desktop Application for Warehouse Management using WPF framework
  - use Live Visual Tree to inspect XAML properties. 
    - Under Tools > Options > Debugging > General > Enable UI Debugging Toos for XAML
    - Reference: https://docs.microsoft.com/en-us/visualstudio/xaml-tools/inspect-xaml-properties-while-debugging?view=vs-2019
+## Reference: 
+ - https://www.c-sharpcorner.com/UploadFile/puranindia/wpf-interview-questions-and-answers/
