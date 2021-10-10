@@ -11,7 +11,10 @@ Desktop Application for Warehouse Management using WPF framework
  - use Live Visual Tree to inspect XAML properties. 
    - Under Tools > Options > Debugging > General > Enable UI Debugging Toos for XAML
    - Reference: https://docs.microsoft.com/en-us/visualstudio/xaml-tools/inspect-xaml-properties-while-debugging?view=vs-2019
-## Reference: 
+### MVC vs MVVM: Key Differences: 
+ - In MVC, controller is the entry point to the Application, while in MVVM, the view is the entry point to the Application.
+ - MVC architecture has “one to many” relationships between Controller & View while in MVVC architecture, “one to many” relationships between View & View Model.
+### Reference: 
  - https://www.c-sharpcorner.com/UploadFile/puranindia/wpf-interview-questions-and-answers/
  - https://www.c-sharpcorner.com/UploadFile/0b73e1/mvvm-model-view-viewmodel-introduction-part-2/
  - https://www.c-sharpcorner.com/UploadFile/87b416/wpf-value-converters/
