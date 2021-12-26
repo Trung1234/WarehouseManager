@@ -13,7 +13,7 @@ Desktop Application for Warehouse Management using WPF framework
    - Reference: https://docs.microsoft.com/en-us/visualstudio/xaml-tools/inspect-xaml-properties-while-debugging?view=vs-2019
 ### MVC vs MVVM: Key Differences: 
  - In MVC, controller is the entry point to the Application, while in MVVM, the view is the entry point to the Application.
- - MVC architecture has “one to many” relationships between Controller & View while in MVVC architecture, “one to many” relationships between View & View Model.
+ - MVC architecture has “one to many” relationships between Controller & View while in MVVM architecture, “one to many” relationships between View & View Model.
 ### Reference: 
  - https://www.c-sharpcorner.com/UploadFile/puranindia/wpf-interview-questions-and-answers/
  - https://www.c-sharpcorner.com/UploadFile/0b73e1/mvvm-model-view-viewmodel-introduction-part-2/
