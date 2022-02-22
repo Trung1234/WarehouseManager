@@ -19,3 +19,4 @@ Desktop Application for Warehouse Management using WPF framework
  - https://www.c-sharpcorner.com/UploadFile/0b73e1/mvvm-model-view-viewmodel-introduction-part-2/
  - https://www.c-sharpcorner.com/UploadFile/87b416/wpf-value-converters/
  - https://edwardthienhoang.wordpress.com/2018/01/10/cac-khai-niem-can-ban-trong-kien-truc-phan-mem/
+ - #### Difference between Excel Vs CSV: https://www.guru99.com/excel-vs-csv.html
