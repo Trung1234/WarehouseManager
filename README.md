@@ -1,7 +1,7 @@
 # Warehouse Manager
 Desktop Application for Warehouse Management using WPF framework
  - use Factory pattern to manage Objects for Export
-      + #### Factory pattern applies for Process with various types such as Export(CSV, Excel. PDF). Import many tables, Payment(Cash, Zalo, Visa)
+      + #### Factory pattern applies for Process with various types such as Export(CSV, Excel. PDF), Import many tables, Payment(Cash, Zalo, Visa)
  - use Singleton pattern to create DataProvider layer between DB Model and ViewModel
  - use MD5CryptoService to encrypt password
  - use Epplus library to export Excel files
