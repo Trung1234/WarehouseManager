@@ -3,6 +3,7 @@ Desktop Application for Warehouse Management using WPF framework
  - use Factory pattern to manage Objects for Export
       + #### Factory pattern applies for the Processes with various types such as Export(CSV, Excel. PDF), Import many tables, Payment(Cash, Zalo, Visa)
  - use Singleton pattern to create DataProvider layer between DB Model and ViewModel
+      + #### Use the Singleton pattern when a classs in your program should have just a single instance available to all clients; for example, a single database  or object or Resource Provider shared by different parts of the program
  - use MD5CryptoService to encrypt password
  - use Epplus library to export Excel files
  - use Transaction to wrap CRUD operation. 
